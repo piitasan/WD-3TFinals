@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+:root {
+    --clr: #8D8DEC;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f3f0ff;
+}
+
+form {
+    background: #e6e6fa;
+    padding: 60px 80px 60px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+form h2 {
+    color: #4b0082;
+    font-weight: 500;
+    font-size: 1.25em;
+    letter-spacing: 0.1em;
+    margin-bottom: 50px;
+}
+
+.inputBox {
+    position: relative;
+    width: 300px;
+    margin-bottom: 40px;
+}
+
+.inputBox input {
+    position: relative;
+    width: 100%;
+    padding: 10px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #999;
+    outline: none;
+    color: #4b0082;
+    font-size: 1em;
+}
+
+label {
+    position: absolute;
+    left: 0;
+    padding: 10px 0;
+    pointer-events: none;
+    color: #999;
+    transition: 0.2s ease-out; /* Added transition here */
+}
+
+.inputBox input:focus ~ label, .inputBox input:valid ~ label {
+    color: var(--clr);
+    transform: translateY(-25px);
+}
+
+.inputBox input.filled ~ label {
+    color: var(--clr);
+    transform: translateY(-25px);
+}
+
+input:focus, input:valid {
+    border-bottom: 2px solid var(--clr);
+}
+
+input[type="submit"] {
+    background: var(--clr);
+    border: none;
+    padding: 15px;
+    border-radius: 50px;
+    color: #f3f0ff;
+    font-size: 1.15em;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+input[type="submit"]:hover {
+    letter-spacing: 0.35em;
+}
+
+p {
+    color: #4b0082;
+}
+
+p a {
+    color: var(--clr);
+    font-weight: 500;
+    text-decoration: none;
+}

@@ -7,12 +7,25 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .navbar-brand {
+            display: flex;
+            align-items: center; /* Align items vertically */
+        }
+
+        .greeting {
+            margin-left: 10px; /* Adjust margin as needed */
+            font-weight: bold;
+            color: #fff; /* Adjust text color */
+        }
+    </style>
 </head>
 <body>
     <div class="background-image"></div>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand logo" href="index.html">
             <img src="logo.png" alt="GIRON'S LOGO">
+            <span id="greeting" class="greeting"></span> <!-- Greeting aligned with the logo -->
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -33,6 +46,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="extras.html">Extras</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="logout()">Logout</a>
                 </li>
             </ul>
         </div>
@@ -97,13 +113,19 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        /*const path = window.location.pathname;
-        const sidebarLinks = document.querySelectorAll('.sidebar .nav-link');
-        sidebarLinks.forEach(link => {
-            if (link.getAttribute('href') === path) {
-                link.classList.add('active');
+        function logout() {
+            localStorage.removeItem('loggedIn');
+            window.location.href = 'logform.html';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const loggedIn = localStorage.getItem('loggedIn');
+            if (loggedIn === 'true') {
+                const greetingElement = document.getElementById('greeting');
+                greetingElement.textContent = 'Hello Petercen Giron!';
+                greetingElement.style.display = 'inline-block';
             }
-        });*/
+        });
     </script>
 </body>
 </html>

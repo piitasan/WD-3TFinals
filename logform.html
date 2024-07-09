@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WD-FINALS</title>
+    <link rel="stylesheet" href="stylesform.css">
+</head>
+<body>
+    <form id="login-form">
+        <h2>Login</h2>
+        <div class="inputBox">
+            <input type="email" id="login-email" required>
+            <label>Email</label>
+        </div>
+        <div class="inputBox">
+            <input type="password" id="login-password" required>
+            <label>Password</label>
+        </div>
+        <div class="inputBox">
+            <input type="submit" value="Login">
+        </div>
+        <p>Don't have an account? <a href="regform.html">Register</a></p>
+    </form>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const registeredEmail = localStorage.getItem('registeredEmail');
+            const registeredPassword = localStorage.getItem('registeredPassword');
+
+            if (email === registeredEmail && password === registeredPassword) {
+                localStorage.setItem('loggedIn', 'true');
+                alert('Login successful!');
+                window.location.href = 'index.html';
+            } else {
+                alert('Invalid email or password.');
+            }
+        });
+
+        document.querySelectorAll('label').forEach(label => {
+            label.innerHTML = label.innerText
+                .split('')
+                .map((letter, index) => `<span style="transition-delay: ${index * 50}ms">${letter}</span>`)
+                .join('');
+        });
+    </script>
+</body>
+</html>

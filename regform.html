@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WD-FINALS</title>
+    <link rel="stylesheet" href="stylesform.css">
+</head>
+<body>
+    <form id="register-form" action="https://formsubmit.co/wabupii23@gmail.com" method="POST">
+        <h2>New Account</h2>
+        <div class="inputBox">
+            <input type="text" id="register-username" name="username" required>
+            <label>Username</label>
+        </div>
+        <div class="inputBox">
+            <input type="email" id="register-email" name="email" required>
+            <label>Email</label>
+        </div>
+        <div class="inputBox">
+            <input type="password" id="register-password" name="password" required>
+            <label>Create Password</label>
+        </div>
+        <div class="inputBox">
+            <input type="password" id="register-confirm-password" name="cpassword" required>
+            <label>Confirm Password</label>
+        </div>
+        <div class="inputBox">
+            <input type="submit" value="Create">
+        </div>
+        <p>Already have an account? <a href="logform.html">Login</a></p>
+    </form>
+
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm-password').value;
+
+            if (password !== confirmPassword) {
+                event.preventDefault();
+                alert('Passwords do not match.');
+            } else {
+                localStorage.setItem('registeredEmail', document.getElementById('register-email').value);
+                localStorage.setItem('registeredPassword', password);
+
+                window.location.href = 'logform.html';
+            }
+        });
+
+        document.querySelectorAll('.inputBox input').forEach(input => {
+            input.addEventListener('input', function() {
+                if (this.value.trim() !== '') {
+                    this.classList.add('filled');
+                } else {
+                    this.classList.remove('filled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
