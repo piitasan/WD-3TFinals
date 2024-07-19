@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WD-FINALS</title>
+    <title>Piitasan Development</title>
     <link rel="stylesheet" href="stylesform.css">
+    <script src="scripts.js"></script>
 </head>
 <body>
     <form id="register-form" action="https://formsubmit.co/wabupii23@gmail.com" method="POST">
@@ -30,32 +31,29 @@
         </div>
         <p>Already have an account? <a href="logform.html">Login</a></p>
     </form>
-
     <script>
         document.getElementById('register-form').addEventListener('submit', function(event) {
-            const password = document.getElementById('register-password').value;
-            const confirmPassword = document.getElementById('register-confirm-password').value;
+        const password = document.getElementById('register-password').value;
+        const confirmPassword = document.getElementById('register-confirm-password').value;
 
-            if (password !== confirmPassword) {
-                event.preventDefault();
-                alert('Passwords do not match.');
+        if (password !== confirmPassword) {
+            event.preventDefault();
+            alert('Passwords do not match.');
+        } else {
+            localStorage.setItem('registeredEmail', document.getElementById('register-email').value);
+            localStorage.setItem('registeredPassword', password);
+            window.location.href = 'logform.html';
+        }
+    });
+        document.querySelectorAll('.inputBox input').forEach(input => {
+        input.addEventListener('input', function() {
+            if (this.value.trim() !== '') {
+                this.classList.add('filled');
             } else {
-                localStorage.setItem('registeredEmail', document.getElementById('register-email').value);
-                localStorage.setItem('registeredPassword', password);
-
-                window.location.href = 'logform.html';
+                this.classList.remove('filled');
             }
         });
-
-        document.querySelectorAll('.inputBox input').forEach(input => {
-            input.addEventListener('input', function() {
-                if (this.value.trim() !== '') {
-                    this.classList.add('filled');
-                } else {
-                    this.classList.remove('filled');
-                }
-            });
-        });
+    });
     </script>
 </body>
 </html>
